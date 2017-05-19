@@ -1,0 +1,1280 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<edmx:Edmx Version="3.0" xmlns:edmx="http://schemas.microsoft.com/ado/2009/11/edmx">
+  <!-- EF Runtime content -->
+  <edmx:Runtime>
+    <!-- SSDL content -->
+    <edmx:StorageModels>
+    <Schema Namespace="MeFaltaUnoModel.Store" Provider="System.Data.SqlClient" ProviderManifestToken="2012" Alias="Self" xmlns:store="http://schemas.microsoft.com/ado/2007/12/edm/EntityStoreSchemaGenerator" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm/ssdl">
+        <EntityType Name="ChatMessage">
+          <Key>
+            <PropertyRef Name="IdChatMessage" />
+          </Key>
+          <Property Name="IdChatMessage" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="IdPlayer" Type="nvarchar" MaxLength="128" Nullable="false" />
+          <Property Name="Message" Type="ntext" Nullable="false" />
+          <Property Name="TimeStamp" Type="datetime" Nullable="false" />
+          <Property Name="IdCharRoom" Type="int" Nullable="false" />
+        </EntityType>
+        <EntityType Name="ChatRoom">
+          <Key>
+            <PropertyRef Name="IdChatRoom" />
+          </Key>
+          <Property Name="IdChatRoom" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="IdInvitation" Type="int" Nullable="false" />
+        </EntityType>
+        <EntityType Name="City">
+          <Key>
+            <PropertyRef Name="IdCity" />
+          </Key>
+          <Property Name="IdCity" Type="int" Nullable="false" />
+          <Property Name="CityName" Type="nvarchar" MaxLength="50" />
+          <Property Name="IdState" Type="int" Nullable="false" />
+        </EntityType>
+        <EntityType Name="Country">
+          <Key>
+            <PropertyRef Name="IdCountry" />
+          </Key>
+          <Property Name="IdCountry" Type="int" Nullable="false" />
+          <Property Name="CountryName" Type="nvarchar" MaxLength="50" />
+        </EntityType>
+        <EntityType Name="Invitation">
+          <Key>
+            <PropertyRef Name="IdInvitation" />
+          </Key>
+          <Property Name="IdInvitation" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="IdInvitationStatus" Type="int" Nullable="false" />
+          <Property Name="InvitationCreatedDate" Type="datetime" Nullable="false" />
+          <Property Name="InvitationModifiedDate" Type="datetime" Nullable="false" />
+          <Property Name="InvitationDate" Type="datetime" Nullable="false" />
+          <Property Name="IdPlayer" Type="nvarchar" MaxLength="128" Nullable="false" />
+          <Property Name="Comments" Type="ntext" />
+          <Property Name="IdStadium" Type="int" Nullable="false" />
+        </EntityType>
+        <EntityType Name="InvitationPlayer">
+          <Key>
+            <PropertyRef Name="IdInvitation" />
+            <PropertyRef Name="IdPlayer" />
+          </Key>
+          <Property Name="IdInvitation" Type="int" Nullable="false" />
+          <Property Name="IdPlayer" Type="nvarchar" MaxLength="128" Nullable="false" />
+        </EntityType>
+        <EntityType Name="InvitationStatus">
+          <Key>
+            <PropertyRef Name="IdInvitationStatus" />
+          </Key>
+          <Property Name="IdInvitationStatus" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="InvitationStatusName" Type="nvarchar" MaxLength="50" />
+          <Property Name="InvitationStatusDescription" Type="nvarchar" MaxLength="500" />
+        </EntityType>
+        <EntityType Name="Player">
+          <Key>
+            <PropertyRef Name="IdPlayer" />
+          </Key>
+          <Property Name="IdPlayer" Type="nvarchar" MaxLength="128" Nullable="false" />
+          <Property Name="Email" Type="nvarchar" MaxLength="256" />
+          <Property Name="EmailConfirmed" Type="bit" Nullable="false" />
+          <Property Name="PasswordHash" Type="nvarchar(max)" />
+          <Property Name="SecurityStamp" Type="nvarchar(max)" />
+          <Property Name="PhoneNumber" Type="nvarchar(max)" />
+          <Property Name="PhoneNumberConfirmed" Type="bit" Nullable="false" />
+          <Property Name="TwoFactorEnabled" Type="bit" Nullable="false" />
+          <Property Name="LockoutEndDateUtc" Type="datetime" />
+          <Property Name="LockoutEnabled" Type="bit" Nullable="false" />
+          <Property Name="AccessFailedCount" Type="int" Nullable="false" />
+          <Property Name="UserName" Type="nvarchar" MaxLength="256" Nullable="false" />
+          <Property Name="FirstName" Type="nvarchar(max)" />
+          <Property Name="LastName" Type="nvarchar(max)" />
+          <Property Name="Sex" Type="nvarchar(max)" />
+          <Property Name="Age" Type="int" />
+          <Property Name="FacebookToken" Type="nvarchar(max)" />
+          <Property Name="TwitterToken" Type="nvarchar(max)" />
+          <Property Name="TwitterTokenSecret" Type="nvarchar(max)" />
+          <Property Name="GoogleToken" Type="nvarchar(max)" />
+          <Property Name="CreatedDate" Type="datetime" />
+          <Property Name="ProfilePictureUrl" Type="nvarchar(max)" />
+          <Property Name="IdCountry" Type="int" />
+          <Property Name="IdState" Type="int" />
+          <Property Name="IdCity" Type="int" />
+          <Property Name="Password" Type="nvarchar(max)" />
+          <Property Name="Discriminator" Type="nvarchar" MaxLength="128" Nullable="false" />
+        </EntityType>
+        <EntityType Name="PlayerSkills">
+          <Key>
+            <PropertyRef Name="IdPlayer" />
+            <PropertyRef Name="IdSkill" />
+          </Key>
+          <Property Name="IdPlayer" Type="nvarchar" MaxLength="128" Nullable="false" />
+          <Property Name="IdSkill" Type="int" Nullable="false" />
+        </EntityType>
+        <EntityType Name="RatePlayer">
+          <Key>
+            <PropertyRef Name="IdRatePlayer" />
+          </Key>
+          <Property Name="IdRatePlayer" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="IdPlayerFrom" Type="nvarchar" MaxLength="128" Nullable="false" />
+          <Property Name="IdPlayerTo" Type="nvarchar" MaxLength="128" Nullable="false" />
+          <Property Name="IdInvitation" Type="int" Nullable="false" />
+          <Property Name="TimeStamp" Type="datetime" Nullable="false" />
+          <Property Name="Rate" Type="int" Nullable="false" />
+          <Property Name="Comments" Type="ntext" />
+        </EntityType>
+        <EntityType Name="RateStadium">
+          <Key>
+            <PropertyRef Name="IdRateStadium" />
+          </Key>
+          <Property Name="IdRateStadium" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="IdPlayer" Type="nvarchar" MaxLength="128" Nullable="false" />
+          <Property Name="TimeStamp" Type="datetime" Nullable="false" />
+          <Property Name="Rate" Type="int" Nullable="false" />
+          <Property Name="Comment" Type="ntext" />
+          <Property Name="IdStadium" Type="int" />
+        </EntityType>
+        <EntityType Name="Skill">
+          <Key>
+            <PropertyRef Name="IdSkill" />
+          </Key>
+          <Property Name="IdSkill" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="SkillName" Type="nvarchar" MaxLength="100" />
+          <Property Name="SkillDescription" Type="nvarchar" MaxLength="500" />
+        </EntityType>
+        <EntityType Name="Stadium">
+          <Key>
+            <PropertyRef Name="IdStadium" />
+          </Key>
+          <Property Name="IdStadium" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="StadiumName" Type="nvarchar" MaxLength="100" />
+          <Property Name="StadiumDescription" Type="ntext" />
+          <Property Name="Longitude" Type="bigint" />
+          <Property Name="Latitude" Type="bigint" />
+        </EntityType>
+        <EntityType Name="State">
+          <Key>
+            <PropertyRef Name="IdState" />
+          </Key>
+          <Property Name="IdState" Type="int" Nullable="false" />
+          <Property Name="StateName" Type="nvarchar" MaxLength="50" />
+          <Property Name="IdCountry" Type="int" Nullable="false" />
+        </EntityType>
+        <EntityType Name="Team">
+          <Key>
+            <PropertyRef Name="IdTeam" />
+          </Key>
+          <Property Name="IdTeam" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="TeamName" Type="nvarchar" MaxLength="50" Nullable="false" />
+          <Property Name="CreatedDate" Type="datetime" Nullable="false" />
+          <Property Name="ModifiedDate" Type="datetime" Nullable="false" />
+          <Property Name="IdPlayerCreator" Type="nvarchar" MaxLength="128" Nullable="false" />
+        </EntityType>
+        <EntityType Name="TeamPlayer">
+          <Key>
+            <PropertyRef Name="IdTeamPlayer" />
+          </Key>
+          <Property Name="IdTeamPlayer" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="IdTeam" Type="int" Nullable="false" />
+          <Property Name="IdPlayer" Type="nvarchar" MaxLength="128" />
+          <Property Name="FirstName" Type="nvarchar" MaxLength="50" />
+          <Property Name="LastName" Type="nvarchar" MaxLength="50" />
+        </EntityType>
+        <Association Name="FK_ChatMessage_ChatRoom">
+          <End Role="ChatRoom" Type="Self.ChatRoom" Multiplicity="1" />
+          <End Role="ChatMessage" Type="Self.ChatMessage" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="ChatRoom">
+              <PropertyRef Name="IdChatRoom" />
+            </Principal>
+            <Dependent Role="ChatMessage">
+              <PropertyRef Name="IdCharRoom" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_ChatMessage_Player">
+          <End Role="Player" Type="Self.Player" Multiplicity="1" />
+          <End Role="ChatMessage" Type="Self.ChatMessage" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Player">
+              <PropertyRef Name="IdPlayer" />
+            </Principal>
+            <Dependent Role="ChatMessage">
+              <PropertyRef Name="IdPlayer" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_ChatRoom_Invitation">
+          <End Role="Invitation" Type="Self.Invitation" Multiplicity="1" />
+          <End Role="ChatRoom" Type="Self.ChatRoom" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Invitation">
+              <PropertyRef Name="IdInvitation" />
+            </Principal>
+            <Dependent Role="ChatRoom">
+              <PropertyRef Name="IdInvitation" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_City_State">
+          <End Role="State" Type="Self.State" Multiplicity="1" />
+          <End Role="City" Type="Self.City" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="State">
+              <PropertyRef Name="IdState" />
+            </Principal>
+            <Dependent Role="City">
+              <PropertyRef Name="IdState" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_Invitation_InvitationStatus">
+          <End Role="InvitationStatus" Type="Self.InvitationStatus" Multiplicity="1" />
+          <End Role="Invitation" Type="Self.Invitation" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="InvitationStatus">
+              <PropertyRef Name="IdInvitationStatus" />
+            </Principal>
+            <Dependent Role="Invitation">
+              <PropertyRef Name="IdInvitationStatus" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_Invitation_Player">
+          <End Role="Player" Type="Self.Player" Multiplicity="1" />
+          <End Role="Invitation" Type="Self.Invitation" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Player">
+              <PropertyRef Name="IdPlayer" />
+            </Principal>
+            <Dependent Role="Invitation">
+              <PropertyRef Name="IdPlayer" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_Invitation_Stadium">
+          <End Role="Stadium" Type="Self.Stadium" Multiplicity="1" />
+          <End Role="Invitation" Type="Self.Invitation" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Stadium">
+              <PropertyRef Name="IdStadium" />
+            </Principal>
+            <Dependent Role="Invitation">
+              <PropertyRef Name="IdStadium" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_InvitationPlayer_Invitation">
+          <End Role="Invitation" Type="Self.Invitation" Multiplicity="1" />
+          <End Role="InvitationPlayer" Type="Self.InvitationPlayer" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Invitation">
+              <PropertyRef Name="IdInvitation" />
+            </Principal>
+            <Dependent Role="InvitationPlayer">
+              <PropertyRef Name="IdInvitation" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_InvitationPlayer_Player">
+          <End Role="Player" Type="Self.Player" Multiplicity="1" />
+          <End Role="InvitationPlayer" Type="Self.InvitationPlayer" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Player">
+              <PropertyRef Name="IdPlayer" />
+            </Principal>
+            <Dependent Role="InvitationPlayer">
+              <PropertyRef Name="IdPlayer" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_Player_City">
+          <End Role="City" Type="Self.City" Multiplicity="0..1" />
+          <End Role="Player" Type="Self.Player" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="City">
+              <PropertyRef Name="IdCity" />
+            </Principal>
+            <Dependent Role="Player">
+              <PropertyRef Name="IdCity" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_Player_Country">
+          <End Role="Country" Type="Self.Country" Multiplicity="0..1" />
+          <End Role="Player" Type="Self.Player" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Country">
+              <PropertyRef Name="IdCountry" />
+            </Principal>
+            <Dependent Role="Player">
+              <PropertyRef Name="IdCountry" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_Player_State">
+          <End Role="State" Type="Self.State" Multiplicity="0..1" />
+          <End Role="Player" Type="Self.Player" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="State">
+              <PropertyRef Name="IdState" />
+            </Principal>
+            <Dependent Role="Player">
+              <PropertyRef Name="IdState" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_PlayerSkills_Player">
+          <End Role="Player" Type="Self.Player" Multiplicity="1" />
+          <End Role="PlayerSkills" Type="Self.PlayerSkills" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Player">
+              <PropertyRef Name="IdPlayer" />
+            </Principal>
+            <Dependent Role="PlayerSkills">
+              <PropertyRef Name="IdPlayer" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_PlayerSkills_Skill">
+          <End Role="Skill" Type="Self.Skill" Multiplicity="1" />
+          <End Role="PlayerSkills" Type="Self.PlayerSkills" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Skill">
+              <PropertyRef Name="IdSkill" />
+            </Principal>
+            <Dependent Role="PlayerSkills">
+              <PropertyRef Name="IdSkill" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_RatePlayer_Invitation">
+          <End Role="Invitation" Type="Self.Invitation" Multiplicity="1" />
+          <End Role="RatePlayer" Type="Self.RatePlayer" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Invitation">
+              <PropertyRef Name="IdInvitation" />
+            </Principal>
+            <Dependent Role="RatePlayer">
+              <PropertyRef Name="IdInvitation" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_RatePlayer_Player">
+          <End Role="Player" Type="Self.Player" Multiplicity="1" />
+          <End Role="RatePlayer" Type="Self.RatePlayer" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Player">
+              <PropertyRef Name="IdPlayer" />
+            </Principal>
+            <Dependent Role="RatePlayer">
+              <PropertyRef Name="IdPlayerFrom" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_RatePlayer_Player1">
+          <End Role="Player" Type="Self.Player" Multiplicity="1" />
+          <End Role="RatePlayer" Type="Self.RatePlayer" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Player">
+              <PropertyRef Name="IdPlayer" />
+            </Principal>
+            <Dependent Role="RatePlayer">
+              <PropertyRef Name="IdPlayerTo" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_RateStadium_Player">
+          <End Role="Player" Type="Self.Player" Multiplicity="1" />
+          <End Role="RateStadium" Type="Self.RateStadium" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Player">
+              <PropertyRef Name="IdPlayer" />
+            </Principal>
+            <Dependent Role="RateStadium">
+              <PropertyRef Name="IdPlayer" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_RateStadium_Stadium">
+          <End Role="Stadium" Type="Self.Stadium" Multiplicity="0..1" />
+          <End Role="RateStadium" Type="Self.RateStadium" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Stadium">
+              <PropertyRef Name="IdStadium" />
+            </Principal>
+            <Dependent Role="RateStadium">
+              <PropertyRef Name="IdStadium" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_State_Country">
+          <End Role="Country" Type="Self.Country" Multiplicity="1" />
+          <End Role="State" Type="Self.State" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Country">
+              <PropertyRef Name="IdCountry" />
+            </Principal>
+            <Dependent Role="State">
+              <PropertyRef Name="IdCountry" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_Team_Player">
+          <End Role="Player" Type="Self.Player" Multiplicity="1" />
+          <End Role="Team" Type="Self.Team" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Player">
+              <PropertyRef Name="IdPlayer" />
+            </Principal>
+            <Dependent Role="Team">
+              <PropertyRef Name="IdPlayerCreator" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_TeamPlayer_Player">
+          <End Role="Player" Type="Self.Player" Multiplicity="0..1" />
+          <End Role="TeamPlayer" Type="Self.TeamPlayer" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Player">
+              <PropertyRef Name="IdPlayer" />
+            </Principal>
+            <Dependent Role="TeamPlayer">
+              <PropertyRef Name="IdPlayer" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_TeamPlayer_Team">
+          <End Role="Team" Type="Self.Team" Multiplicity="1" />
+          <End Role="TeamPlayer" Type="Self.TeamPlayer" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Team">
+              <PropertyRef Name="IdTeam" />
+            </Principal>
+            <Dependent Role="TeamPlayer">
+              <PropertyRef Name="IdTeam" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <EntityContainer Name="MeFaltaUnoModelStoreContainer">
+          <EntitySet Name="ChatMessage" EntityType="Self.ChatMessage" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="ChatRoom" EntityType="Self.ChatRoom" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="City" EntityType="Self.City" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="Country" EntityType="Self.Country" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="Invitation" EntityType="Self.Invitation" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="InvitationPlayer" EntityType="Self.InvitationPlayer" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="InvitationStatus" EntityType="Self.InvitationStatus" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="Player" EntityType="Self.Player" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="PlayerSkills" EntityType="Self.PlayerSkills" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="RatePlayer" EntityType="Self.RatePlayer" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="RateStadium" EntityType="Self.RateStadium" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="Skill" EntityType="Self.Skill" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="Stadium" EntityType="Self.Stadium" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="State" EntityType="Self.State" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="Team" EntityType="Self.Team" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="TeamPlayer" EntityType="Self.TeamPlayer" Schema="dbo" store:Type="Tables" />
+          <AssociationSet Name="FK_ChatMessage_ChatRoom" Association="Self.FK_ChatMessage_ChatRoom">
+            <End Role="ChatRoom" EntitySet="ChatRoom" />
+            <End Role="ChatMessage" EntitySet="ChatMessage" />
+          </AssociationSet>
+          <AssociationSet Name="FK_ChatMessage_Player" Association="Self.FK_ChatMessage_Player">
+            <End Role="Player" EntitySet="Player" />
+            <End Role="ChatMessage" EntitySet="ChatMessage" />
+          </AssociationSet>
+          <AssociationSet Name="FK_ChatRoom_Invitation" Association="Self.FK_ChatRoom_Invitation">
+            <End Role="Invitation" EntitySet="Invitation" />
+            <End Role="ChatRoom" EntitySet="ChatRoom" />
+          </AssociationSet>
+          <AssociationSet Name="FK_City_State" Association="Self.FK_City_State">
+            <End Role="State" EntitySet="State" />
+            <End Role="City" EntitySet="City" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Invitation_InvitationStatus" Association="Self.FK_Invitation_InvitationStatus">
+            <End Role="InvitationStatus" EntitySet="InvitationStatus" />
+            <End Role="Invitation" EntitySet="Invitation" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Invitation_Player" Association="Self.FK_Invitation_Player">
+            <End Role="Player" EntitySet="Player" />
+            <End Role="Invitation" EntitySet="Invitation" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Invitation_Stadium" Association="Self.FK_Invitation_Stadium">
+            <End Role="Stadium" EntitySet="Stadium" />
+            <End Role="Invitation" EntitySet="Invitation" />
+          </AssociationSet>
+          <AssociationSet Name="FK_InvitationPlayer_Invitation" Association="Self.FK_InvitationPlayer_Invitation">
+            <End Role="Invitation" EntitySet="Invitation" />
+            <End Role="InvitationPlayer" EntitySet="InvitationPlayer" />
+          </AssociationSet>
+          <AssociationSet Name="FK_InvitationPlayer_Player" Association="Self.FK_InvitationPlayer_Player">
+            <End Role="Player" EntitySet="Player" />
+            <End Role="InvitationPlayer" EntitySet="InvitationPlayer" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Player_City" Association="Self.FK_Player_City">
+            <End Role="City" EntitySet="City" />
+            <End Role="Player" EntitySet="Player" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Player_Country" Association="Self.FK_Player_Country">
+            <End Role="Country" EntitySet="Country" />
+            <End Role="Player" EntitySet="Player" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Player_State" Association="Self.FK_Player_State">
+            <End Role="State" EntitySet="State" />
+            <End Role="Player" EntitySet="Player" />
+          </AssociationSet>
+          <AssociationSet Name="FK_PlayerSkills_Player" Association="Self.FK_PlayerSkills_Player">
+            <End Role="Player" EntitySet="Player" />
+            <End Role="PlayerSkills" EntitySet="PlayerSkills" />
+          </AssociationSet>
+          <AssociationSet Name="FK_PlayerSkills_Skill" Association="Self.FK_PlayerSkills_Skill">
+            <End Role="Skill" EntitySet="Skill" />
+            <End Role="PlayerSkills" EntitySet="PlayerSkills" />
+          </AssociationSet>
+          <AssociationSet Name="FK_RatePlayer_Invitation" Association="Self.FK_RatePlayer_Invitation">
+            <End Role="Invitation" EntitySet="Invitation" />
+            <End Role="RatePlayer" EntitySet="RatePlayer" />
+          </AssociationSet>
+          <AssociationSet Name="FK_RatePlayer_Player" Association="Self.FK_RatePlayer_Player">
+            <End Role="Player" EntitySet="Player" />
+            <End Role="RatePlayer" EntitySet="RatePlayer" />
+          </AssociationSet>
+          <AssociationSet Name="FK_RatePlayer_Player1" Association="Self.FK_RatePlayer_Player1">
+            <End Role="Player" EntitySet="Player" />
+            <End Role="RatePlayer" EntitySet="RatePlayer" />
+          </AssociationSet>
+          <AssociationSet Name="FK_RateStadium_Player" Association="Self.FK_RateStadium_Player">
+            <End Role="Player" EntitySet="Player" />
+            <End Role="RateStadium" EntitySet="RateStadium" />
+          </AssociationSet>
+          <AssociationSet Name="FK_RateStadium_Stadium" Association="Self.FK_RateStadium_Stadium">
+            <End Role="Stadium" EntitySet="Stadium" />
+            <End Role="RateStadium" EntitySet="RateStadium" />
+          </AssociationSet>
+          <AssociationSet Name="FK_State_Country" Association="Self.FK_State_Country">
+            <End Role="Country" EntitySet="Country" />
+            <End Role="State" EntitySet="State" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Team_Player" Association="Self.FK_Team_Player">
+            <End Role="Player" EntitySet="Player" />
+            <End Role="Team" EntitySet="Team" />
+          </AssociationSet>
+          <AssociationSet Name="FK_TeamPlayer_Player" Association="Self.FK_TeamPlayer_Player">
+            <End Role="Player" EntitySet="Player" />
+            <End Role="TeamPlayer" EntitySet="TeamPlayer" />
+          </AssociationSet>
+          <AssociationSet Name="FK_TeamPlayer_Team" Association="Self.FK_TeamPlayer_Team">
+            <End Role="Team" EntitySet="Team" />
+            <End Role="TeamPlayer" EntitySet="TeamPlayer" />
+          </AssociationSet>
+        </EntityContainer>
+      </Schema></edmx:StorageModels>
+    <!-- CSDL content -->
+    <edmx:ConceptualModels>
+      <Schema Namespace="MeFaltaUnoModel" Alias="Self" annotation:UseStrongSpatialTypes="false" xmlns:annotation="http://schemas.microsoft.com/ado/2009/02/edm/annotation" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm">
+        <EntityContainer Name="MeFaltaUnoEntities" annotation:LazyLoadingEnabled="true" >
+          <EntitySet Name="ChatMessage" EntityType="MeFaltaUnoModel.ChatMessage" />
+          <EntitySet Name="ChatRoom" EntityType="MeFaltaUnoModel.ChatRoom" />
+          <EntitySet Name="City" EntityType="MeFaltaUnoModel.City" />
+          <EntitySet Name="Country" EntityType="MeFaltaUnoModel.Country" />
+          <EntitySet Name="Invitation" EntityType="MeFaltaUnoModel.Invitation" />
+          <EntitySet Name="InvitationStatus" EntityType="MeFaltaUnoModel.InvitationStatus" />
+          <EntitySet Name="Player" EntityType="MeFaltaUnoModel.Player" />
+          <EntitySet Name="RatePlayer" EntityType="MeFaltaUnoModel.RatePlayer" />
+          <EntitySet Name="RateStadium" EntityType="MeFaltaUnoModel.RateStadium" />
+          <EntitySet Name="Skill" EntityType="MeFaltaUnoModel.Skill" />
+          <EntitySet Name="Stadium" EntityType="MeFaltaUnoModel.Stadium" />
+          <EntitySet Name="State" EntityType="MeFaltaUnoModel.State" />
+          <EntitySet Name="Team" EntityType="MeFaltaUnoModel.Team" />
+          <EntitySet Name="TeamPlayer" EntityType="MeFaltaUnoModel.TeamPlayer" />
+          <AssociationSet Name="FK_ChatMessage_ChatRoom" Association="MeFaltaUnoModel.FK_ChatMessage_ChatRoom">
+            <End Role="ChatRoom" EntitySet="ChatRoom" />
+            <End Role="ChatMessage" EntitySet="ChatMessage" />
+          </AssociationSet>
+          <AssociationSet Name="FK_ChatMessage_Player" Association="MeFaltaUnoModel.FK_ChatMessage_Player">
+            <End Role="Player" EntitySet="Player" />
+            <End Role="ChatMessage" EntitySet="ChatMessage" />
+          </AssociationSet>
+          <AssociationSet Name="FK_ChatRoom_Invitation" Association="MeFaltaUnoModel.FK_ChatRoom_Invitation">
+            <End Role="Invitation" EntitySet="Invitation" />
+            <End Role="ChatRoom" EntitySet="ChatRoom" />
+          </AssociationSet>
+          <AssociationSet Name="FK_City_State" Association="MeFaltaUnoModel.FK_City_State">
+            <End Role="State" EntitySet="State" />
+            <End Role="City" EntitySet="City" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Player_City" Association="MeFaltaUnoModel.FK_Player_City">
+            <End Role="City" EntitySet="City" />
+            <End Role="Player" EntitySet="Player" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Player_Country" Association="MeFaltaUnoModel.FK_Player_Country">
+            <End Role="Country" EntitySet="Country" />
+            <End Role="Player" EntitySet="Player" />
+          </AssociationSet>
+          <AssociationSet Name="FK_State_Country" Association="MeFaltaUnoModel.FK_State_Country">
+            <End Role="Country" EntitySet="Country" />
+            <End Role="State" EntitySet="State" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Invitation_InvitationStatus" Association="MeFaltaUnoModel.FK_Invitation_InvitationStatus">
+            <End Role="InvitationStatus" EntitySet="InvitationStatus" />
+            <End Role="Invitation" EntitySet="Invitation" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Invitation_Player" Association="MeFaltaUnoModel.FK_Invitation_Player">
+            <End Role="Player" EntitySet="Player" />
+            <End Role="Invitation" EntitySet="Invitation" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Invitation_Stadium" Association="MeFaltaUnoModel.FK_Invitation_Stadium">
+            <End Role="Stadium" EntitySet="Stadium" />
+            <End Role="Invitation" EntitySet="Invitation" />
+          </AssociationSet>
+          <AssociationSet Name="FK_RatePlayer_Invitation" Association="MeFaltaUnoModel.FK_RatePlayer_Invitation">
+            <End Role="Invitation" EntitySet="Invitation" />
+            <End Role="RatePlayer" EntitySet="RatePlayer" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Player_State" Association="MeFaltaUnoModel.FK_Player_State">
+            <End Role="State" EntitySet="State" />
+            <End Role="Player" EntitySet="Player" />
+          </AssociationSet>
+          <AssociationSet Name="FK_RatePlayer_Player" Association="MeFaltaUnoModel.FK_RatePlayer_Player">
+            <End Role="Player" EntitySet="Player" />
+            <End Role="RatePlayer" EntitySet="RatePlayer" />
+          </AssociationSet>
+          <AssociationSet Name="FK_RatePlayer_Player1" Association="MeFaltaUnoModel.FK_RatePlayer_Player1">
+            <End Role="Player" EntitySet="Player" />
+            <End Role="RatePlayer" EntitySet="RatePlayer" />
+          </AssociationSet>
+          <AssociationSet Name="FK_RateStadium_Player" Association="MeFaltaUnoModel.FK_RateStadium_Player">
+            <End Role="Player" EntitySet="Player" />
+            <End Role="RateStadium" EntitySet="RateStadium" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Team_Player" Association="MeFaltaUnoModel.FK_Team_Player">
+            <End Role="Player" EntitySet="Player" />
+            <End Role="Team" EntitySet="Team" />
+          </AssociationSet>
+          <AssociationSet Name="FK_TeamPlayer_Player" Association="MeFaltaUnoModel.FK_TeamPlayer_Player">
+            <End Role="Player" EntitySet="Player" />
+            <End Role="TeamPlayer" EntitySet="TeamPlayer" />
+          </AssociationSet>
+          <AssociationSet Name="FK_RateStadium_Stadium" Association="MeFaltaUnoModel.FK_RateStadium_Stadium">
+            <End Role="Stadium" EntitySet="Stadium" />
+            <End Role="RateStadium" EntitySet="RateStadium" />
+          </AssociationSet>
+          <AssociationSet Name="FK_TeamPlayer_Team" Association="MeFaltaUnoModel.FK_TeamPlayer_Team">
+            <End Role="Team" EntitySet="Team" />
+            <End Role="TeamPlayer" EntitySet="TeamPlayer" />
+          </AssociationSet>
+          <AssociationSet Name="InvitationPlayer" Association="MeFaltaUnoModel.InvitationPlayer">
+            <End Role="Invitation" EntitySet="Invitation" />
+            <End Role="Player" EntitySet="Player" />
+          </AssociationSet>
+          <AssociationSet Name="PlayerSkills" Association="MeFaltaUnoModel.PlayerSkills">
+            <End Role="Player" EntitySet="Player" />
+            <End Role="Skill" EntitySet="Skill" />
+          </AssociationSet>
+        </EntityContainer>
+        <EntityType Name="ChatMessage">
+          <Key>
+            <PropertyRef Name="IdChatMessage" />
+          </Key>
+          <Property Name="IdChatMessage" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="Message" Type="String" Nullable="false" MaxLength="Max" FixedLength="false" Unicode="true" />
+          <Property Name="TimeStamp" Type="DateTime" Nullable="false" Precision="3" />
+          <NavigationProperty Name="ChatRoom" Relationship="MeFaltaUnoModel.FK_ChatMessage_ChatRoom" FromRole="ChatMessage" ToRole="ChatRoom" />
+          <NavigationProperty Name="Player" Relationship="MeFaltaUnoModel.FK_ChatMessage_Player" FromRole="ChatMessage" ToRole="Player" />
+        </EntityType>
+        <EntityType Name="ChatRoom">
+          <Key>
+            <PropertyRef Name="IdChatRoom" />
+          </Key>
+          <Property Name="IdChatRoom" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <NavigationProperty Name="ChatMessage" Relationship="MeFaltaUnoModel.FK_ChatMessage_ChatRoom" FromRole="ChatRoom" ToRole="ChatMessage" />
+          <NavigationProperty Name="Invitation" Relationship="MeFaltaUnoModel.FK_ChatRoom_Invitation" FromRole="ChatRoom" ToRole="Invitation" />
+        </EntityType>
+        <EntityType Name="City">
+          <Key>
+            <PropertyRef Name="IdCity" />
+          </Key>
+          <Property Name="IdCity" Type="Int32" Nullable="false" />
+          <Property Name="CityName" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <NavigationProperty Name="State" Relationship="MeFaltaUnoModel.FK_City_State" FromRole="City" ToRole="State" />
+          <NavigationProperty Name="Player" Relationship="MeFaltaUnoModel.FK_Player_City" FromRole="City" ToRole="Player" />
+        </EntityType>
+        <EntityType Name="Country">
+          <Key>
+            <PropertyRef Name="IdCountry" />
+          </Key>
+          <Property Name="IdCountry" Type="Int32" Nullable="false" />
+          <Property Name="CountryName" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <NavigationProperty Name="Player" Relationship="MeFaltaUnoModel.FK_Player_Country" FromRole="Country" ToRole="Player" />
+          <NavigationProperty Name="State" Relationship="MeFaltaUnoModel.FK_State_Country" FromRole="Country" ToRole="State" />
+        </EntityType>
+        <EntityType Name="Invitation">
+          <Key>
+            <PropertyRef Name="IdInvitation" />
+          </Key>
+          <Property Name="IdInvitation" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="InvitationCreatedDate" Type="DateTime" Nullable="false" Precision="3" />
+          <Property Name="InvitationModifiedDate" Type="DateTime" Nullable="false" Precision="3" />
+          <Property Name="InvitationDate" Type="DateTime" Nullable="false" Precision="3" />
+          <Property Name="Comments" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+          <NavigationProperty Name="ChatRoom" Relationship="MeFaltaUnoModel.FK_ChatRoom_Invitation" FromRole="Invitation" ToRole="ChatRoom" />
+          <NavigationProperty Name="InvitationStatus" Relationship="MeFaltaUnoModel.FK_Invitation_InvitationStatus" FromRole="Invitation" ToRole="InvitationStatus" />
+          <NavigationProperty Name="Player" Relationship="MeFaltaUnoModel.FK_Invitation_Player" FromRole="Invitation" ToRole="Player" />
+          <NavigationProperty Name="Stadium" Relationship="MeFaltaUnoModel.FK_Invitation_Stadium" FromRole="Invitation" ToRole="Stadium" />
+          <NavigationProperty Name="RatePlayer" Relationship="MeFaltaUnoModel.FK_RatePlayer_Invitation" FromRole="Invitation" ToRole="RatePlayer" />
+          <NavigationProperty Name="Player1" Relationship="MeFaltaUnoModel.InvitationPlayer" FromRole="Invitation" ToRole="Player" />
+        </EntityType>
+        <EntityType Name="InvitationStatus">
+          <Key>
+            <PropertyRef Name="IdInvitationStatus" />
+          </Key>
+          <Property Name="IdInvitationStatus" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="InvitationStatusName" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="InvitationStatusDescription" Type="String" MaxLength="500" FixedLength="false" Unicode="true" />
+          <NavigationProperty Name="Invitation" Relationship="MeFaltaUnoModel.FK_Invitation_InvitationStatus" FromRole="InvitationStatus" ToRole="Invitation" />
+        </EntityType>
+        <EntityType Name="Player">
+          <Key>
+            <PropertyRef Name="IdPlayer" />
+          </Key>
+          <Property Name="IdPlayer" Type="String" Nullable="false" MaxLength="128" FixedLength="false" Unicode="true" />
+          <Property Name="Email" Type="String" MaxLength="256" FixedLength="false" Unicode="true" />
+          <Property Name="EmailConfirmed" Type="Boolean" Nullable="false" />
+          <Property Name="PasswordHash" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+          <Property Name="SecurityStamp" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+          <Property Name="PhoneNumber" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+          <Property Name="PhoneNumberConfirmed" Type="Boolean" Nullable="false" />
+          <Property Name="TwoFactorEnabled" Type="Boolean" Nullable="false" />
+          <Property Name="LockoutEndDateUtc" Type="DateTime" Precision="3" />
+          <Property Name="LockoutEnabled" Type="Boolean" Nullable="false" />
+          <Property Name="AccessFailedCount" Type="Int32" Nullable="false" />
+          <Property Name="UserName" Type="String" Nullable="false" MaxLength="256" FixedLength="false" Unicode="true" />
+          <Property Name="FirstName" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+          <Property Name="LastName" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+          <Property Name="Sex" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+          <Property Name="Age" Type="Int32" />
+          <Property Name="FacebookToken" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+          <Property Name="TwitterToken" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+          <Property Name="TwitterTokenSecret" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+          <Property Name="GoogleToken" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+          <Property Name="CreatedDate" Type="DateTime" Precision="3" />
+          <Property Name="ProfilePictureUrl" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+          <Property Name="Password" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+          <Property Name="Discriminator" Type="String" Nullable="false" MaxLength="128" FixedLength="false" Unicode="true" />
+          <NavigationProperty Name="ChatMessage" Relationship="MeFaltaUnoModel.FK_ChatMessage_Player" FromRole="Player" ToRole="ChatMessage" />
+          <NavigationProperty Name="City" Relationship="MeFaltaUnoModel.FK_Player_City" FromRole="Player" ToRole="City" />
+          <NavigationProperty Name="Country" Relationship="MeFaltaUnoModel.FK_Player_Country" FromRole="Player" ToRole="Country" />
+          <NavigationProperty Name="Invitation" Relationship="MeFaltaUnoModel.FK_Invitation_Player" FromRole="Player" ToRole="Invitation" />
+          <NavigationProperty Name="State" Relationship="MeFaltaUnoModel.FK_Player_State" FromRole="Player" ToRole="State" />
+          <NavigationProperty Name="RatePlayer" Relationship="MeFaltaUnoModel.FK_RatePlayer_Player" FromRole="Player" ToRole="RatePlayer" />
+          <NavigationProperty Name="RatePlayer1" Relationship="MeFaltaUnoModel.FK_RatePlayer_Player1" FromRole="Player" ToRole="RatePlayer" />
+          <NavigationProperty Name="RateStadium" Relationship="MeFaltaUnoModel.FK_RateStadium_Player" FromRole="Player" ToRole="RateStadium" />
+          <NavigationProperty Name="Team" Relationship="MeFaltaUnoModel.FK_Team_Player" FromRole="Player" ToRole="Team" />
+          <NavigationProperty Name="TeamPlayer" Relationship="MeFaltaUnoModel.FK_TeamPlayer_Player" FromRole="Player" ToRole="TeamPlayer" />
+          <NavigationProperty Name="Invitation1" Relationship="MeFaltaUnoModel.InvitationPlayer" FromRole="Player" ToRole="Invitation" />
+          <NavigationProperty Name="Skill" Relationship="MeFaltaUnoModel.PlayerSkills" FromRole="Player" ToRole="Skill" />
+        </EntityType>
+        <EntityType Name="RatePlayer">
+          <Key>
+            <PropertyRef Name="IdRatePlayer" />
+          </Key>
+          <Property Name="IdRatePlayer" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="TimeStamp" Type="DateTime" Nullable="false" Precision="3" />
+          <Property Name="Rate" Type="Int32" Nullable="false" />
+          <Property Name="Comments" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+          <NavigationProperty Name="Invitation" Relationship="MeFaltaUnoModel.FK_RatePlayer_Invitation" FromRole="RatePlayer" ToRole="Invitation" />
+          <NavigationProperty Name="Player" Relationship="MeFaltaUnoModel.FK_RatePlayer_Player" FromRole="RatePlayer" ToRole="Player" />
+          <NavigationProperty Name="Player1" Relationship="MeFaltaUnoModel.FK_RatePlayer_Player1" FromRole="RatePlayer" ToRole="Player" />
+        </EntityType>
+        <EntityType Name="RateStadium">
+          <Key>
+            <PropertyRef Name="IdRateStadium" />
+          </Key>
+          <Property Name="IdRateStadium" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="TimeStamp" Type="DateTime" Nullable="false" Precision="3" />
+          <Property Name="Rate" Type="Int32" Nullable="false" />
+          <Property Name="Comment" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+          <NavigationProperty Name="Player" Relationship="MeFaltaUnoModel.FK_RateStadium_Player" FromRole="RateStadium" ToRole="Player" />
+          <NavigationProperty Name="Stadium" Relationship="MeFaltaUnoModel.FK_RateStadium_Stadium" FromRole="RateStadium" ToRole="Stadium" />
+        </EntityType>
+        <EntityType Name="Skill">
+          <Key>
+            <PropertyRef Name="IdSkill" />
+          </Key>
+          <Property Name="IdSkill" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="SkillName" Type="String" MaxLength="100" FixedLength="false" Unicode="true" />
+          <Property Name="SkillDescription" Type="String" MaxLength="500" FixedLength="false" Unicode="true" />
+          <NavigationProperty Name="Player" Relationship="MeFaltaUnoModel.PlayerSkills" FromRole="Skill" ToRole="Player" />
+        </EntityType>
+        <EntityType Name="Stadium">
+          <Key>
+            <PropertyRef Name="IdStadium" />
+          </Key>
+          <Property Name="IdStadium" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="StadiumName" Type="String" MaxLength="100" FixedLength="false" Unicode="true" />
+          <Property Name="StadiumDescription" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+          <Property Name="Longitude" Type="Int64" />
+          <Property Name="Latitude" Type="Int64" />
+          <NavigationProperty Name="Invitation" Relationship="MeFaltaUnoModel.FK_Invitation_Stadium" FromRole="Stadium" ToRole="Invitation" />
+          <NavigationProperty Name="RateStadium" Relationship="MeFaltaUnoModel.FK_RateStadium_Stadium" FromRole="Stadium" ToRole="RateStadium" />
+        </EntityType>
+        <EntityType Name="State">
+          <Key>
+            <PropertyRef Name="IdState" />
+          </Key>
+          <Property Name="IdState" Type="Int32" Nullable="false" />
+          <Property Name="StateName" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <NavigationProperty Name="City" Relationship="MeFaltaUnoModel.FK_City_State" FromRole="State" ToRole="City" />
+          <NavigationProperty Name="Country" Relationship="MeFaltaUnoModel.FK_State_Country" FromRole="State" ToRole="Country" />
+          <NavigationProperty Name="Player" Relationship="MeFaltaUnoModel.FK_Player_State" FromRole="State" ToRole="Player" />
+        </EntityType>
+        <EntityType Name="Team">
+          <Key>
+            <PropertyRef Name="IdTeam" />
+          </Key>
+          <Property Name="IdTeam" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="TeamName" Type="String" Nullable="false" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="CreatedDate" Type="DateTime" Nullable="false" Precision="3" />
+          <Property Name="ModifiedDate" Type="DateTime" Nullable="false" Precision="3" />
+          <NavigationProperty Name="Player" Relationship="MeFaltaUnoModel.FK_Team_Player" FromRole="Team" ToRole="Player" />
+          <NavigationProperty Name="TeamPlayer" Relationship="MeFaltaUnoModel.FK_TeamPlayer_Team" FromRole="Team" ToRole="TeamPlayer" />
+        </EntityType>
+        <EntityType Name="TeamPlayer">
+          <Key>
+            <PropertyRef Name="IdTeamPlayer" />
+          </Key>
+          <Property Name="IdTeamPlayer" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="FirstName" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="LastName" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <NavigationProperty Name="Player" Relationship="MeFaltaUnoModel.FK_TeamPlayer_Player" FromRole="TeamPlayer" ToRole="Player" />
+          <NavigationProperty Name="Team" Relationship="MeFaltaUnoModel.FK_TeamPlayer_Team" FromRole="TeamPlayer" ToRole="Team" />
+        </EntityType>
+        <Association Name="FK_ChatMessage_ChatRoom">
+          <End Type="MeFaltaUnoModel.ChatRoom" Role="ChatRoom" Multiplicity="1" />
+          <End Type="MeFaltaUnoModel.ChatMessage" Role="ChatMessage" Multiplicity="*" />
+        </Association>
+        <Association Name="FK_ChatMessage_Player">
+          <End Type="MeFaltaUnoModel.Player" Role="Player" Multiplicity="1" />
+          <End Type="MeFaltaUnoModel.ChatMessage" Role="ChatMessage" Multiplicity="*" />
+        </Association>
+        <Association Name="FK_ChatRoom_Invitation">
+          <End Type="MeFaltaUnoModel.Invitation" Role="Invitation" Multiplicity="1" />
+          <End Type="MeFaltaUnoModel.ChatRoom" Role="ChatRoom" Multiplicity="*" />
+        </Association>
+        <Association Name="FK_City_State">
+          <End Type="MeFaltaUnoModel.State" Role="State" Multiplicity="1" />
+          <End Type="MeFaltaUnoModel.City" Role="City" Multiplicity="*" />
+        </Association>
+        <Association Name="FK_Player_City">
+          <End Type="MeFaltaUnoModel.City" Role="City" Multiplicity="0..1" />
+          <End Type="MeFaltaUnoModel.Player" Role="Player" Multiplicity="*" />
+        </Association>
+        <Association Name="FK_Player_Country">
+          <End Type="MeFaltaUnoModel.Country" Role="Country" Multiplicity="0..1" />
+          <End Type="MeFaltaUnoModel.Player" Role="Player" Multiplicity="*" />
+        </Association>
+        <Association Name="FK_State_Country">
+          <End Type="MeFaltaUnoModel.Country" Role="Country" Multiplicity="1" />
+          <End Type="MeFaltaUnoModel.State" Role="State" Multiplicity="*" />
+        </Association>
+        <Association Name="FK_Invitation_InvitationStatus">
+          <End Type="MeFaltaUnoModel.InvitationStatus" Role="InvitationStatus" Multiplicity="1" />
+          <End Type="MeFaltaUnoModel.Invitation" Role="Invitation" Multiplicity="*" />
+        </Association>
+        <Association Name="FK_Invitation_Player">
+          <End Type="MeFaltaUnoModel.Player" Role="Player" Multiplicity="1" />
+          <End Type="MeFaltaUnoModel.Invitation" Role="Invitation" Multiplicity="*" />
+        </Association>
+        <Association Name="FK_Invitation_Stadium">
+          <End Type="MeFaltaUnoModel.Stadium" Role="Stadium" Multiplicity="1" />
+          <End Type="MeFaltaUnoModel.Invitation" Role="Invitation" Multiplicity="*" />
+        </Association>
+        <Association Name="FK_RatePlayer_Invitation">
+          <End Type="MeFaltaUnoModel.Invitation" Role="Invitation" Multiplicity="1" />
+          <End Type="MeFaltaUnoModel.RatePlayer" Role="RatePlayer" Multiplicity="*" />
+        </Association>
+        <Association Name="FK_Player_State">
+          <End Type="MeFaltaUnoModel.State" Role="State" Multiplicity="0..1" />
+          <End Type="MeFaltaUnoModel.Player" Role="Player" Multiplicity="*" />
+        </Association>
+        <Association Name="FK_RatePlayer_Player">
+          <End Type="MeFaltaUnoModel.Player" Role="Player" Multiplicity="1" />
+          <End Type="MeFaltaUnoModel.RatePlayer" Role="RatePlayer" Multiplicity="*" />
+        </Association>
+        <Association Name="FK_RatePlayer_Player1">
+          <End Type="MeFaltaUnoModel.Player" Role="Player" Multiplicity="1" />
+          <End Type="MeFaltaUnoModel.RatePlayer" Role="RatePlayer" Multiplicity="*" />
+        </Association>
+        <Association Name="FK_RateStadium_Player">
+          <End Type="MeFaltaUnoModel.Player" Role="Player" Multiplicity="1" />
+          <End Type="MeFaltaUnoModel.RateStadium" Role="RateStadium" Multiplicity="*" />
+        </Association>
+        <Association Name="FK_Team_Player">
+          <End Type="MeFaltaUnoModel.Player" Role="Player" Multiplicity="1" />
+          <End Type="MeFaltaUnoModel.Team" Role="Team" Multiplicity="*" />
+        </Association>
+        <Association Name="FK_TeamPlayer_Player">
+          <End Type="MeFaltaUnoModel.Player" Role="Player" Multiplicity="0..1" />
+          <End Type="MeFaltaUnoModel.TeamPlayer" Role="TeamPlayer" Multiplicity="*" />
+        </Association>
+        <Association Name="FK_RateStadium_Stadium">
+          <End Type="MeFaltaUnoModel.Stadium" Role="Stadium" Multiplicity="0..1" />
+          <End Type="MeFaltaUnoModel.RateStadium" Role="RateStadium" Multiplicity="*" />
+        </Association>
+        <Association Name="FK_TeamPlayer_Team">
+          <End Type="MeFaltaUnoModel.Team" Role="Team" Multiplicity="1" />
+          <End Type="MeFaltaUnoModel.TeamPlayer" Role="TeamPlayer" Multiplicity="*" />
+        </Association>
+        <Association Name="InvitationPlayer">
+          <End Type="MeFaltaUnoModel.Invitation" Role="Invitation" Multiplicity="*" />
+          <End Type="MeFaltaUnoModel.Player" Role="Player" Multiplicity="*" />
+        </Association>
+        <Association Name="PlayerSkills">
+          <End Type="MeFaltaUnoModel.Player" Role="Player" Multiplicity="*" />
+          <End Type="MeFaltaUnoModel.Skill" Role="Skill" Multiplicity="*" />
+        </Association>
+      </Schema>
+    </edmx:ConceptualModels>
+    <!-- C-S mapping content -->
+    <edmx:Mappings>
+      <Mapping Space="C-S" xmlns="http://schemas.microsoft.com/ado/2009/11/mapping/cs">
+        <EntityContainerMapping StorageEntityContainer="MeFaltaUnoModelStoreContainer" CdmEntityContainer="MeFaltaUnoEntities" >
+          <EntitySetMapping Name="ChatMessage">
+            <EntityTypeMapping TypeName="MeFaltaUnoModel.ChatMessage">
+              <MappingFragment StoreEntitySet="ChatMessage">
+                <ScalarProperty Name="TimeStamp" ColumnName="TimeStamp" />
+                <ScalarProperty Name="Message" ColumnName="Message" />
+                <ScalarProperty Name="IdChatMessage" ColumnName="IdChatMessage" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="ChatRoom">
+            <EntityTypeMapping TypeName="MeFaltaUnoModel.ChatRoom">
+              <MappingFragment StoreEntitySet="ChatRoom">
+                <ScalarProperty Name="IdChatRoom" ColumnName="IdChatRoom" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="City">
+            <EntityTypeMapping TypeName="MeFaltaUnoModel.City">
+              <MappingFragment StoreEntitySet="City">
+                <ScalarProperty Name="CityName" ColumnName="CityName" />
+                <ScalarProperty Name="IdCity" ColumnName="IdCity" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="Country">
+            <EntityTypeMapping TypeName="MeFaltaUnoModel.Country">
+              <MappingFragment StoreEntitySet="Country">
+                <ScalarProperty Name="CountryName" ColumnName="CountryName" />
+                <ScalarProperty Name="IdCountry" ColumnName="IdCountry" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="Invitation">
+            <EntityTypeMapping TypeName="MeFaltaUnoModel.Invitation">
+              <MappingFragment StoreEntitySet="Invitation">
+                <ScalarProperty Name="Comments" ColumnName="Comments" />
+                <ScalarProperty Name="InvitationDate" ColumnName="InvitationDate" />
+                <ScalarProperty Name="InvitationModifiedDate" ColumnName="InvitationModifiedDate" />
+                <ScalarProperty Name="InvitationCreatedDate" ColumnName="InvitationCreatedDate" />
+                <ScalarProperty Name="IdInvitation" ColumnName="IdInvitation" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="InvitationStatus">
+            <EntityTypeMapping TypeName="MeFaltaUnoModel.InvitationStatus">
+              <MappingFragment StoreEntitySet="InvitationStatus">
+                <ScalarProperty Name="InvitationStatusDescription" ColumnName="InvitationStatusDescription" />
+                <ScalarProperty Name="InvitationStatusName" ColumnName="InvitationStatusName" />
+                <ScalarProperty Name="IdInvitationStatus" ColumnName="IdInvitationStatus" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="Player">
+            <EntityTypeMapping TypeName="MeFaltaUnoModel.Player">
+              <MappingFragment StoreEntitySet="Player">
+                <ScalarProperty Name="Discriminator" ColumnName="Discriminator" />
+                <ScalarProperty Name="Password" ColumnName="Password" />
+                <ScalarProperty Name="ProfilePictureUrl" ColumnName="ProfilePictureUrl" />
+                <ScalarProperty Name="CreatedDate" ColumnName="CreatedDate" />
+                <ScalarProperty Name="GoogleToken" ColumnName="GoogleToken" />
+                <ScalarProperty Name="TwitterTokenSecret" ColumnName="TwitterTokenSecret" />
+                <ScalarProperty Name="TwitterToken" ColumnName="TwitterToken" />
+                <ScalarProperty Name="FacebookToken" ColumnName="FacebookToken" />
+                <ScalarProperty Name="Age" ColumnName="Age" />
+                <ScalarProperty Name="Sex" ColumnName="Sex" />
+                <ScalarProperty Name="LastName" ColumnName="LastName" />
+                <ScalarProperty Name="FirstName" ColumnName="FirstName" />
+                <ScalarProperty Name="UserName" ColumnName="UserName" />
+                <ScalarProperty Name="AccessFailedCount" ColumnName="AccessFailedCount" />
+                <ScalarProperty Name="LockoutEnabled" ColumnName="LockoutEnabled" />
+                <ScalarProperty Name="LockoutEndDateUtc" ColumnName="LockoutEndDateUtc" />
+                <ScalarProperty Name="TwoFactorEnabled" ColumnName="TwoFactorEnabled" />
+                <ScalarProperty Name="PhoneNumberConfirmed" ColumnName="PhoneNumberConfirmed" />
+                <ScalarProperty Name="PhoneNumber" ColumnName="PhoneNumber" />
+                <ScalarProperty Name="SecurityStamp" ColumnName="SecurityStamp" />
+                <ScalarProperty Name="PasswordHash" ColumnName="PasswordHash" />
+                <ScalarProperty Name="EmailConfirmed" ColumnName="EmailConfirmed" />
+                <ScalarProperty Name="Email" ColumnName="Email" />
+                <ScalarProperty Name="IdPlayer" ColumnName="IdPlayer" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="RatePlayer">
+            <EntityTypeMapping TypeName="MeFaltaUnoModel.RatePlayer">
+              <MappingFragment StoreEntitySet="RatePlayer">
+                <ScalarProperty Name="Comments" ColumnName="Comments" />
+                <ScalarProperty Name="Rate" ColumnName="Rate" />
+                <ScalarProperty Name="TimeStamp" ColumnName="TimeStamp" />
+                <ScalarProperty Name="IdRatePlayer" ColumnName="IdRatePlayer" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="RateStadium">
+            <EntityTypeMapping TypeName="MeFaltaUnoModel.RateStadium">
+              <MappingFragment StoreEntitySet="RateStadium">
+                <ScalarProperty Name="Comment" ColumnName="Comment" />
+                <ScalarProperty Name="Rate" ColumnName="Rate" />
+                <ScalarProperty Name="TimeStamp" ColumnName="TimeStamp" />
+                <ScalarProperty Name="IdRateStadium" ColumnName="IdRateStadium" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="Skill">
+            <EntityTypeMapping TypeName="MeFaltaUnoModel.Skill">
+              <MappingFragment StoreEntitySet="Skill">
+                <ScalarProperty Name="SkillDescription" ColumnName="SkillDescription" />
+                <ScalarProperty Name="SkillName" ColumnName="SkillName" />
+                <ScalarProperty Name="IdSkill" ColumnName="IdSkill" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="Stadium">
+            <EntityTypeMapping TypeName="MeFaltaUnoModel.Stadium">
+              <MappingFragment StoreEntitySet="Stadium">
+                <ScalarProperty Name="Latitude" ColumnName="Latitude" />
+                <ScalarProperty Name="Longitude" ColumnName="Longitude" />
+                <ScalarProperty Name="StadiumDescription" ColumnName="StadiumDescription" />
+                <ScalarProperty Name="StadiumName" ColumnName="StadiumName" />
+                <ScalarProperty Name="IdStadium" ColumnName="IdStadium" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="State">
+            <EntityTypeMapping TypeName="MeFaltaUnoModel.State">
+              <MappingFragment StoreEntitySet="State">
+                <ScalarProperty Name="StateName" ColumnName="StateName" />
+                <ScalarProperty Name="IdState" ColumnName="IdState" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="Team">
+            <EntityTypeMapping TypeName="MeFaltaUnoModel.Team">
+              <MappingFragment StoreEntitySet="Team">
+                <ScalarProperty Name="ModifiedDate" ColumnName="ModifiedDate" />
+                <ScalarProperty Name="CreatedDate" ColumnName="CreatedDate" />
+                <ScalarProperty Name="TeamName" ColumnName="TeamName" />
+                <ScalarProperty Name="IdTeam" ColumnName="IdTeam" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="TeamPlayer">
+            <EntityTypeMapping TypeName="MeFaltaUnoModel.TeamPlayer">
+              <MappingFragment StoreEntitySet="TeamPlayer">
+                <ScalarProperty Name="LastName" ColumnName="LastName" />
+                <ScalarProperty Name="FirstName" ColumnName="FirstName" />
+                <ScalarProperty Name="IdTeamPlayer" ColumnName="IdTeamPlayer" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <AssociationSetMapping Name="FK_ChatMessage_ChatRoom" TypeName="MeFaltaUnoModel.FK_ChatMessage_ChatRoom" StoreEntitySet="ChatMessage">
+            <EndProperty Name="ChatMessage">
+              <ScalarProperty Name="IdChatMessage" ColumnName="IdChatMessage" />
+            </EndProperty>
+            <EndProperty Name="ChatRoom">
+              <ScalarProperty Name="IdChatRoom" ColumnName="IdCharRoom" />
+            </EndProperty>
+          </AssociationSetMapping>
+          <AssociationSetMapping Name="FK_ChatMessage_Player" TypeName="MeFaltaUnoModel.FK_ChatMessage_Player" StoreEntitySet="ChatMessage">
+            <EndProperty Name="ChatMessage">
+              <ScalarProperty Name="IdChatMessage" ColumnName="IdChatMessage" />
+            </EndProperty>
+            <EndProperty Name="Player">
+              <ScalarProperty Name="IdPlayer" ColumnName="IdPlayer" />
+            </EndProperty>
+          </AssociationSetMapping>
+          <AssociationSetMapping Name="FK_ChatRoom_Invitation" TypeName="MeFaltaUnoModel.FK_ChatRoom_Invitation" StoreEntitySet="ChatRoom">
+            <EndProperty Name="ChatRoom">
+              <ScalarProperty Name="IdChatRoom" ColumnName="IdChatRoom" />
+            </EndProperty>
+            <EndProperty Name="Invitation">
+              <ScalarProperty Name="IdInvitation" ColumnName="IdInvitation" />
+            </EndProperty>
+          </AssociationSetMapping>
+          <AssociationSetMapping Name="FK_City_State" TypeName="MeFaltaUnoModel.FK_City_State" StoreEntitySet="City">
+            <EndProperty Name="City">
+              <ScalarProperty Name="IdCity" ColumnName="IdCity" />
+            </EndProperty>
+            <EndProperty Name="State">
+              <ScalarProperty Name="IdState" ColumnName="IdState" />
+            </EndProperty>
+          </AssociationSetMapping>
+          <AssociationSetMapping Name="FK_Player_City" TypeName="MeFaltaUnoModel.FK_Player_City" StoreEntitySet="Player">
+            <EndProperty Name="Player">
+              <ScalarProperty Name="IdPlayer" ColumnName="IdPlayer" />
+            </EndProperty>
+            <EndProperty Name="City">
+              <ScalarProperty Name="IdCity" ColumnName="IdCity" />
+            </EndProperty>
+            <Condition ColumnName="IdCity" IsNull="false" />
+          </AssociationSetMapping>
+          <AssociationSetMapping Name="FK_Player_Country" TypeName="MeFaltaUnoModel.FK_Player_Country" StoreEntitySet="Player">
+            <EndProperty Name="Player">
+              <ScalarProperty Name="IdPlayer" ColumnName="IdPlayer" />
+            </EndProperty>
+            <EndProperty Name="Country">
+              <ScalarProperty Name="IdCountry" ColumnName="IdCountry" />
+            </EndProperty>
+            <Condition ColumnName="IdCountry" IsNull="false" />
+          </AssociationSetMapping>
+          <AssociationSetMapping Name="FK_State_Country" TypeName="MeFaltaUnoModel.FK_State_Country" StoreEntitySet="State">
+            <EndProperty Name="State">
+              <ScalarProperty Name="IdState" ColumnName="IdState" />
+            </EndProperty>
+            <EndProperty Name="Country">
+              <ScalarProperty Name="IdCountry" ColumnName="IdCountry" />
+            </EndProperty>
+          </AssociationSetMapping>
+          <AssociationSetMapping Name="FK_Invitation_InvitationStatus" TypeName="MeFaltaUnoModel.FK_Invitation_InvitationStatus" StoreEntitySet="Invitation">
+            <EndProperty Name="Invitation">
+              <ScalarProperty Name="IdInvitation" ColumnName="IdInvitation" />
+            </EndProperty>
+            <EndProperty Name="InvitationStatus">
+              <ScalarProperty Name="IdInvitationStatus" ColumnName="IdInvitationStatus" />
+            </EndProperty>
+          </AssociationSetMapping>
+          <AssociationSetMapping Name="FK_Invitation_Player" TypeName="MeFaltaUnoModel.FK_Invitation_Player" StoreEntitySet="Invitation">
+            <EndProperty Name="Invitation">
+              <ScalarProperty Name="IdInvitation" ColumnName="IdInvitation" />
+            </EndProperty>
+            <EndProperty Name="Player">
+              <ScalarProperty Name="IdPlayer" ColumnName="IdPlayer" />
+            </EndProperty>
+          </AssociationSetMapping>
+          <AssociationSetMapping Name="FK_Invitation_Stadium" TypeName="MeFaltaUnoModel.FK_Invitation_Stadium" StoreEntitySet="Invitation">
+            <EndProperty Name="Invitation">
+              <ScalarProperty Name="IdInvitation" ColumnName="IdInvitation" />
+            </EndProperty>
+            <EndProperty Name="Stadium">
+              <ScalarProperty Name="IdStadium" ColumnName="IdStadium" />
+            </EndProperty>
+          </AssociationSetMapping>
+          <AssociationSetMapping Name="FK_RatePlayer_Invitation" TypeName="MeFaltaUnoModel.FK_RatePlayer_Invitation" StoreEntitySet="RatePlayer">
+            <EndProperty Name="RatePlayer">
+              <ScalarProperty Name="IdRatePlayer" ColumnName="IdRatePlayer" />
+            </EndProperty>
+            <EndProperty Name="Invitation">
+              <ScalarProperty Name="IdInvitation" ColumnName="IdInvitation" />
+            </EndProperty>
+          </AssociationSetMapping>
+          <AssociationSetMapping Name="FK_Player_State" TypeName="MeFaltaUnoModel.FK_Player_State" StoreEntitySet="Player">
+            <EndProperty Name="Player">
+              <ScalarProperty Name="IdPlayer" ColumnName="IdPlayer" />
+            </EndProperty>
+            <EndProperty Name="State">
+              <ScalarProperty Name="IdState" ColumnName="IdState" />
+            </EndProperty>
+            <Condition ColumnName="IdState" IsNull="false" />
+          </AssociationSetMapping>
+          <AssociationSetMapping Name="FK_RatePlayer_Player" TypeName="MeFaltaUnoModel.FK_RatePlayer_Player" StoreEntitySet="RatePlayer">
+            <EndProperty Name="RatePlayer">
+              <ScalarProperty Name="IdRatePlayer" ColumnName="IdRatePlayer" />
+            </EndProperty>
+            <EndProperty Name="Player">
+              <ScalarProperty Name="IdPlayer" ColumnName="IdPlayerFrom" />
+            </EndProperty>
+          </AssociationSetMapping>
+          <AssociationSetMapping Name="FK_RatePlayer_Player1" TypeName="MeFaltaUnoModel.FK_RatePlayer_Player1" StoreEntitySet="RatePlayer">
+            <EndProperty Name="RatePlayer">
+              <ScalarProperty Name="IdRatePlayer" ColumnName="IdRatePlayer" />
+            </EndProperty>
+            <EndProperty Name="Player">
+              <ScalarProperty Name="IdPlayer" ColumnName="IdPlayerTo" />
+            </EndProperty>
+          </AssociationSetMapping>
+          <AssociationSetMapping Name="FK_RateStadium_Player" TypeName="MeFaltaUnoModel.FK_RateStadium_Player" StoreEntitySet="RateStadium">
+            <EndProperty Name="RateStadium">
+              <ScalarProperty Name="IdRateStadium" ColumnName="IdRateStadium" />
+            </EndProperty>
+            <EndProperty Name="Player">
+              <ScalarProperty Name="IdPlayer" ColumnName="IdPlayer" />
+            </EndProperty>
+          </AssociationSetMapping>
+          <AssociationSetMapping Name="FK_Team_Player" TypeName="MeFaltaUnoModel.FK_Team_Player" StoreEntitySet="Team">
+            <EndProperty Name="Team">
+              <ScalarProperty Name="IdTeam" ColumnName="IdTeam" />
+            </EndProperty>
+            <EndProperty Name="Player">
+              <ScalarProperty Name="IdPlayer" ColumnName="IdPlayerCreator" />
+            </EndProperty>
+          </AssociationSetMapping>
+          <AssociationSetMapping Name="FK_TeamPlayer_Player" TypeName="MeFaltaUnoModel.FK_TeamPlayer_Player" StoreEntitySet="TeamPlayer">
+            <EndProperty Name="TeamPlayer">
+              <ScalarProperty Name="IdTeamPlayer" ColumnName="IdTeamPlayer" />
+            </EndProperty>
+            <EndProperty Name="Player">
+              <ScalarProperty Name="IdPlayer" ColumnName="IdPlayer" />
+            </EndProperty>
+            <Condition ColumnName="IdPlayer" IsNull="false" />
+          </AssociationSetMapping>
+          <AssociationSetMapping Name="FK_RateStadium_Stadium" TypeName="MeFaltaUnoModel.FK_RateStadium_Stadium" StoreEntitySet="RateStadium">
+            <EndProperty Name="RateStadium">
+              <ScalarProperty Name="IdRateStadium" ColumnName="IdRateStadium" />
+            </EndProperty>
+            <EndProperty Name="Stadium">
+              <ScalarProperty Name="IdStadium" ColumnName="IdStadium" />
+            </EndProperty>
+            <Condition ColumnName="IdStadium" IsNull="false" />
+          </AssociationSetMapping>
+          <AssociationSetMapping Name="FK_TeamPlayer_Team" TypeName="MeFaltaUnoModel.FK_TeamPlayer_Team" StoreEntitySet="TeamPlayer">
+            <EndProperty Name="TeamPlayer">
+              <ScalarProperty Name="IdTeamPlayer" ColumnName="IdTeamPlayer" />
+            </EndProperty>
+            <EndProperty Name="Team">
+              <ScalarProperty Name="IdTeam" ColumnName="IdTeam" />
+            </EndProperty>
+          </AssociationSetMapping>
+          <AssociationSetMapping Name="InvitationPlayer" TypeName="MeFaltaUnoModel.InvitationPlayer" StoreEntitySet="InvitationPlayer">
+            <EndProperty Name="Player">
+              <ScalarProperty Name="IdPlayer" ColumnName="IdPlayer" />
+            </EndProperty>
+            <EndProperty Name="Invitation">
+              <ScalarProperty Name="IdInvitation" ColumnName="IdInvitation" />
+            </EndProperty>
+          </AssociationSetMapping>
+          <AssociationSetMapping Name="PlayerSkills" TypeName="MeFaltaUnoModel.PlayerSkills" StoreEntitySet="PlayerSkills">
+            <EndProperty Name="Skill">
+              <ScalarProperty Name="IdSkill" ColumnName="IdSkill" />
+            </EndProperty>
+            <EndProperty Name="Player">
+              <ScalarProperty Name="IdPlayer" ColumnName="IdPlayer" />
+            </EndProperty>
+          </AssociationSetMapping>
+        </EntityContainerMapping>
+      </Mapping>
+    </edmx:Mappings>
+  </edmx:Runtime>
+  <!-- EF Designer content (DO NOT EDIT MANUALLY BELOW HERE) -->
+  <Designer xmlns="http://schemas.microsoft.com/ado/2009/11/edmx">
+    <Connection>
+      <DesignerInfoPropertySet>
+        <DesignerProperty Name="MetadataArtifactProcessing" Value="EmbedInOutputAssembly" />
+      </DesignerInfoPropertySet>
+    </Connection>
+    <Options>
+      <DesignerInfoPropertySet>
+        <DesignerProperty Name="ValidateOnBuild" Value="true" />
+        <DesignerProperty Name="EnablePluralization" Value="false" />
+        <DesignerProperty Name="IncludeForeignKeysInModel" Value="false" />
+        <DesignerProperty Name="UseLegacyProvider" Value="false" />
+        <DesignerProperty Name="CodeGenerationStrategy" Value="None" />
+      </DesignerInfoPropertySet>
+    </Options>
+    <!-- Diagram content (shape and connector positions) -->
+    <Diagrams></Diagrams>
+  </Designer>
+</edmx:Edmx>

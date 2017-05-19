@@ -1,0 +1,20 @@
+{
+  "name": "mefaltauno",
+  "description": "Me Falta Uno AngularJS",
+  "version": "0.0.0",
+  "license": "MIT",
+  "private": true,
+  "dependencies": {
+    "angular": "~1.5.0",
+    "angular-route": "~1.5.0",
+    "angular-loader": "~1.5.0",
+    "angular-mocks": "~1.5.0",
+    "html5-boilerplate": "^5.3.0",
+    "angular-multiple-select": "^1.1.2",
+    "angular-read-more": "^1.0.5",
+    "angular-fixed-table-header": "^0.2.1"
+  },
+  "resolutions": {
+    "angular": "~1.5.0"
+  }
+}

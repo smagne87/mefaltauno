@@ -1,0 +1,68 @@
+// *************************** GLOBAL BreakPoint
+$xsmall-width: 500px; // 500
+$small-width:  769px; // 768
+$medium-width: 993px; // 992
+$handleld-width: 1025px; // 1024
+$large-width:  1200px;
+
+$breakpoints: (
+	'xsmall': $xsmall-width,
+	'small':  $small-width,
+	'medium': $medium-width,
+	'handleld': $handleld-width,
+	'large':  $large-width
+) !default;
+
+// *************************** GLOBAL Font
+@import url('https://fonts.googleapis.com/css?family=Open+Sans:300,400,600,700,800');
+$primary-font: 'Open Sans', sans-serif;
+
+// font size
+$xsmall-font: 12px;
+$small-font: 14px;
+$medium-font: 16px;
+$large-font: 28px;
+$xlarge-font: 32px;
+$xxlarge-font: 40px;
+
+
+// font weight
+$thin-weight: 300;
+$regular-weight: 400;
+$semi-weight: 600;
+$extra-weight: 700;
+$extra-x-weight: 800;
+
+// *************************** GLOBAL Color
+$white: #fff;
+$black: #000;
+
+$grey_aaa: #aaaaaa;
+$grey_a1a: #a1a1a1;
+$grey_a6a: #a6a6a6;
+$grey_b3b: #b3b3b3;
+$grey_ccc: #cccccc;
+$grey_c9c: #c9c9c9;
+$grey_d7d: #d7d7d7;
+$grey_e4e: #e4e4e4;
+$grey_f2f: #f2f2f2;
+$grey_f6f: #f6f6f6;
+$grey_f9f: #f9f9f9;
+$grey_1e1: #1e1e1e;
+$grey_333: #333333;
+$grey_4d4: #4d4d4d;
+$grey_515: #515151;
+$grey_666: #666666;
+$grey_6b6: #6b6b6b;
+$grey_868: #868686;
+$grey_999: #999999;
+
+$blue_007: #0077c0;
+$blue_b5d: #b5d1ee;
+
+$red_d41: #d4145a;
+
+$green_00b: #00b034;
+$green_006: #006600;
+$green_009: #009900;
+$green_028: #028b2c;

@@ -1,0 +1,222 @@
+// ******************************************************* BREAKPOINT
+/// _variables.scss_ @require $breakpoints
+// @include respond-to('small') { color: blue; }
+
+@mixin respond-to($breakpoint) {
+  // If the key exists in the map
+  @if map-has-key($breakpoints, $breakpoint) {
+    // Prints a media query based on the value
+    @media (min-width: map-get($breakpoints, $breakpoint)) {
+      @content;
+    }
+  }
+  // If the key doesn't exist in the map
+  @else {
+    @warn "Unfortunately, no value could be retrieved from `#{$breakpoint}`. "
+        + "Available breakpoints are: #{map-keys($breakpoints)}.";
+  }
+}
+
+// ******************************************************* FONT SIZE PX/REM
+// @include font-size(16px); 
+
+@function calculateRem($size) {
+  $remSize: $size / 16px;
+  @return $remSize * 1rem;
+}
+
+@mixin font-size($size) {
+  font-size: $size;
+  font-size: calculateRem($size);
+}
+
+// ******************************************************* TRANSITION
+// @include transition(background-color 1s .5s, color 2s); @include transition(all 0.5s ease);
+
+@mixin transition($transition...) {
+    -moz-transition: $transition;
+    -o-transition: $transition;
+    -webkit-transition: $transition;
+    transition: $transition;
+}
+@mixin transition-property($property...) {
+    -moz-transition-property: $property;
+    -o-transition-property: $property;
+    -webkit-transition-property: $property;
+    transition-property: $property;
+}
+@mixin transition-duration($duration...) {
+    -moz-transition-property: $duration;
+    -o-transition-property: $duration;
+    -webkit-transition-property: $duration;
+    transition-property: $duration;
+}
+@mixin transition-timing-function($timing...) {
+    -moz-transition-timing-function: $timing;
+    -o-transition-timing-function: $timing;
+    -webkit-transition-timing-function: $timing;
+    transition-timing-function: $timing;
+}
+@mixin transition-delay($delay...) {
+    -moz-transition-delay: $delay;
+    -o-transition-delay: $delay;
+    -webkit-transition-delay: $delay;
+    transition-delay: $delay;
+}
+
+
+// ******************************************************* TRANSFORM
+// @include skew(25,10);
+// @include transform-origin(top left);
+
+// generic transform
+@mixin transform($transforms) {
+    -moz-transform: $transforms;
+    -o-transform: $transforms;
+    -ms-transform: $transforms;
+    -webkit-transform: $transforms;
+    transform: $transforms;
+}
+// rotate
+@mixin rotate ($deg) {
+  @include transform(rotate(#{$deg}deg));
+}
+ 
+// scale
+@mixin scale($scale) {
+    @include transform(scale($scale));
+} 
+// translate
+@mixin translate ($x, $y) {
+    @include transform(translate($x, $y));
+}
+// skew
+@mixin skew ($x, $y) {
+    @include transform(skew(#{$x}deg, #{$y}deg));
+}
+//transform origin
+@mixin transform-origin ($origin) {
+    moz-transform-origin: $origin;
+    -o-transform-origin: $origin;
+    -ms-transform-origin: $origin;
+    -webkit-transform-origin: $origin;
+    transform-origin: $origin;
+}
+
+// ******************************************************* CENTER POSITION ABSOLUTE Horizon + Vertical
+// @include centerer;
+
+@mixin centerer {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+}
+
+// ******************************************************* CENTER POSITION TABLE Vertical
+//@include vertical-center-children(200px);
+
+@mixin vertical-center-children($min-height: auto, $children: '*') {
+    display: table;
+    min-height: $min-height;
+    &:before{
+        content: '\200B';
+        display: inline-block;
+        height: 100%; 
+        vertical-align: middle;
+    }
+
+    #{$children} {
+    display: table-cell;
+    vertical-align: middle;
+    }
+}
+
+// ******************************************************* CUSTOM SCROLLBAR
+//@include scrollbars(.5em, red);
+
+@mixin scrollbars($size, $foreground-color, $background-color: mix($foreground-color, white,  50%)) {
+  // For Google Chrome
+  ::-webkit-scrollbar {
+      width:  $size;
+      height: $size;
+  }
+
+  ::-webkit-scrollbar-thumb {
+      background: $foreground-color;
+  }
+
+  ::-webkit-scrollbar-track {
+      background: $background-color;
+  }
+
+  // For Internet Explorer
+  body {
+    scrollbar-face-color: $foreground-color;
+    scrollbar-track-color: $background-color;
+  }
+}
+
+// ******************************************************* COLUMN COUNT + GAP
+//@include column-gap(3,15px);
+@mixin column-gap($column-count, $column-gap) {
+    -moz-column-count: $column-count;
+    -webkit-column-count: $column-count;
+    column-count: $column-count;
+    -moz-column-gap: $column-gap;
+    -webkit-column-gap: $column-gap;
+    column-gap: $column-gap;
+}
+
+// ******************************************************* SHADOW BOX
+//@include boxShadow(inset 0px 4px 5px rgba(0, 0, 0, 0.5), 2px 6px 10px #999);
+
+@mixin boxShadow($shadows...) {
+  -moz-box-shadow: $shadows;
+  -webkit-box-shadow: $shadows;
+  box-shadow: $shadows;
+}
+
+// ******************************************************* BUTTONS
+//@include button();
+@mixin button($color_text: $white, $color_bg: $blue, $box_shadow_color: $blue,
+              $color_text_hover: $color_text,
+              $color_bg_hover: $color_bg,
+              $box_shadow_color_hover: $box_shadow_color){
+
+  color: $color_text !important;
+  background-color: $color_bg;
+  box-shadow: 0 3px $box_shadow_color;
+  cursor: pointer;
+
+  &:hover {
+    color: $color_text_hover !important;
+    background-color: $color_bg_hover;
+    box-shadow: 0 3px $box_shadow_color_hover;
+  }
+}
+
+// ******************************************************* BORDER RADIUS
+//@include border-radius(top left, top right, bottom right, bottom left);
+@mixin border-radius($radius) {
+  border-radius: $radius;
+  -webkit-border-radius: $radius;
+  -moz-border-radius: $radius;
+  -ms-border-radius: $radius;
+  -o-border-radius: $radius;
+}
+// ******************************************************* RESPONSIVE RATIO
+//@include responsive-ratio(16,9);
+
+@mixin responsive-ratio($x,$y, $pseudo: false) {
+    $padding: unquote( ( $y / $x ) * 100 + '%' );
+    @if $pseudo {
+        &:before {
+            @include pseudo($pos: relative);
+            width: 100%;
+            padding-top: $padding;
+        }
+    } @else {
+        padding-top: $padding;
+    }
+}

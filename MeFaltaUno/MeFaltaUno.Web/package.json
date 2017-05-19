@@ -1,0 +1,26 @@
+{
+  "name": "mefaltauno",
+  "private": true,
+  "version": "0.0.0",
+  "description": "Me falta uno project",
+  "license": "MIT",
+  "devDependencies": {
+    "bower": "^1.7.7",
+    "colors": "^1.1.2",
+    "del": "^2.2.2",
+    "gulp": "^3.9.1",
+    "gulp-concat": "^2.6.0",
+    "gulp-scss": "^1.4.0",
+    "gulp-clean-css": "^3.2.0",
+    "gulp-sourcemaps": "^2.6.0",
+    "gulp-streamify": "^1.0.2",
+    "gulp-uglify": "^2.1.2",
+    "merge-stream": "^1.0.1",
+    "gulp-watch": "^4.3.11",
+    "path": "^0.12.7",
+    "vinyl-source-stream": "^1.1.0"
+  },
+  "scripts": {
+    "install:dependencies": "npm install && bower install"
+  }
+}

@@ -1,0 +1,46 @@
+<?xml version="1.0" encoding="utf-8"?>
+<edmx:Edmx Version="3.0" xmlns:edmx="http://schemas.microsoft.com/ado/2009/11/edmx">
+ <!-- EF Designer content (DO NOT EDIT MANUALLY BELOW HERE) -->
+  <edmx:Designer xmlns="http://schemas.microsoft.com/ado/2009/11/edmx">
+    <!-- Diagram content (shape and connector positions) -->
+    <edmx:Diagrams>
+      <Diagram DiagramId="5e31a23e5ad249e39c2c3ef6b672a7cf" Name="Diagram1" ZoomLevel="55" >
+        <EntityTypeShape EntityType="MeFaltaUnoModel.ChatMessage" Width="1.5" PointX="12.75" PointY="14.375" />
+        <EntityTypeShape EntityType="MeFaltaUnoModel.ChatRoom" Width="1.5" PointX="12" PointY="8.625" />
+        <EntityTypeShape EntityType="MeFaltaUnoModel.City" Width="1.5" PointX="5.25" PointY="18.875" />
+        <EntityTypeShape EntityType="MeFaltaUnoModel.Country" Width="1.5" PointX="0.75" PointY="10.125" />
+        <EntityTypeShape EntityType="MeFaltaUnoModel.Invitation" Width="1.5" PointX="9.75" PointY="13.875" />
+        <EntityTypeShape EntityType="MeFaltaUnoModel.InvitationStatus" Width="1.5" PointX="7.5" PointY="8" />
+        <EntityTypeShape EntityType="MeFaltaUnoModel.Player" Width="1.5" PointX="7.5" PointY="11.5" />
+        <EntityTypeShape EntityType="MeFaltaUnoModel.RatePlayer" Width="1.5" PointX="15" PointY="14.25" />
+        <EntityTypeShape EntityType="MeFaltaUnoModel.RateStadium" Width="1.5" PointX="12.75" PointY="11.375" />
+        <EntityTypeShape EntityType="MeFaltaUnoModel.Skill" Width="1.5" PointX="9.75" PointY="19.625" />
+        <EntityTypeShape EntityType="MeFaltaUnoModel.Stadium" Width="1.5" PointX="7.5" PointY="20.5" />
+        <EntityTypeShape EntityType="MeFaltaUnoModel.State" Width="1.5" PointX="3" PointY="18.75" />
+        <EntityTypeShape EntityType="MeFaltaUnoModel.Team" Width="1.5" PointX="9.75" PointY="25.125" />
+        <EntityTypeShape EntityType="MeFaltaUnoModel.TeamPlayer" Width="1.5" PointX="12" PointY="18.375" />
+        <AssociationConnector Association="MeFaltaUnoModel.FK_ChatMessage_ChatRoom" />
+        <AssociationConnector Association="MeFaltaUnoModel.FK_ChatMessage_Player" />
+        <AssociationConnector Association="MeFaltaUnoModel.FK_ChatRoom_Invitation" />
+        <AssociationConnector Association="MeFaltaUnoModel.FK_City_State" />
+        <AssociationConnector Association="MeFaltaUnoModel.FK_Player_City" />
+        <AssociationConnector Association="MeFaltaUnoModel.FK_Player_Country" />
+        <AssociationConnector Association="MeFaltaUnoModel.FK_State_Country" />
+        <AssociationConnector Association="MeFaltaUnoModel.FK_Invitation_InvitationStatus" />
+        <AssociationConnector Association="MeFaltaUnoModel.FK_Invitation_Player" />
+        <AssociationConnector Association="MeFaltaUnoModel.FK_Invitation_Stadium" />
+        <AssociationConnector Association="MeFaltaUnoModel.FK_RatePlayer_Invitation" />
+        <AssociationConnector Association="MeFaltaUnoModel.FK_Player_State" />
+        <AssociationConnector Association="MeFaltaUnoModel.FK_RatePlayer_Player" />
+        <AssociationConnector Association="MeFaltaUnoModel.FK_RatePlayer_Player1" />
+        <AssociationConnector Association="MeFaltaUnoModel.FK_RateStadium_Player" />
+        <AssociationConnector Association="MeFaltaUnoModel.FK_Team_Player" />
+        <AssociationConnector Association="MeFaltaUnoModel.FK_TeamPlayer_Player" />
+        <AssociationConnector Association="MeFaltaUnoModel.FK_RateStadium_Stadium" />
+        <AssociationConnector Association="MeFaltaUnoModel.FK_TeamPlayer_Team" />
+        <AssociationConnector Association="MeFaltaUnoModel.InvitationPlayer" />
+        <AssociationConnector Association="MeFaltaUnoModel.PlayerSkills" />
+      </Diagram>
+    </edmx:Diagrams>
+  </edmx:Designer>
+</edmx:Edmx>
