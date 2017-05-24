@@ -1,18 +1,3 @@
-// *************************** GLOBAL BreakPoint
-$xsmall-width: 500px; // 500
-$small-width:  769px; // 768
-$medium-width: 993px; // 992
-$handleld-width: 1025px; // 1024
-$large-width:  1200px;
-
-$breakpoints: (
-	'xsmall': $xsmall-width,
-	'small':  $small-width,
-	'medium': $medium-width,
-	'handleld': $handleld-width,
-	'large':  $large-width
-) !default;
-
 // *************************** GLOBAL Font
 @import url('https://fonts.googleapis.com/css?family=Open+Sans:300,400,600,700,800');
 $primary-font: 'Open Sans', sans-serif;
@@ -24,8 +9,6 @@ $medium-font: 16px;
 $large-font: 28px;
 $xlarge-font: 32px;
 $xxlarge-font: 40px;
-
-
 // font weight
 $thin-weight: 300;
 $regular-weight: 400;
@@ -34,35 +17,53 @@ $extra-weight: 700;
 $extra-x-weight: 800;
 
 // *************************** GLOBAL Color
-$white: #fff;
-$black: #000;
+$global-color-black: #000;
+$global-color-dark-blue-primary: #004b87;
+$global-color-dark-blue-quaternary: #00609c;
+$global-color-dark-blue-secondary: #0c5692;
+$global-color-dark-blue-tertiary: #0174b2;
+$global-color-dark-grayish-blue-primary: #959ba2;
+$global-color-dark-green-primary: #6cb133;
+$global-color-grayish-red-primary: #c6c4c4;
+$global-color-light-grayish-magenta-primary: #e2bde9;
+$global-color-light-grayish-blue-primary: #d4d7d9;
+$global-color-light-grayish-red-primary: #f5f0ef;
+$global-color-light-grayish-red-secondary: #dcd7d6;
+$global-color-medium-light-gray: #dcd7d6;
+$global-color-moderate-green-primary: #92c63e;
+$global-color-pale-orange-primary: #ffd9b2;
+$global-color-pure-orange-primary: #ff8200;
+$global-color-red-primary: #f00;
+$global-color-soft-blue-primary: #5eb3dd;
+$global-color-strong-blue-primary: #0081c6;
+$global-color-strong-blue-secondary: #1b90cf;
+$global-color-strong-blue-tertiary: #0075b3;
+$global-color-strong-green-primary: #84bd00;
+$global-color-strong-magenta-primary: #9b26b6;
+$global-color-very-soft-green-primary: #daebb4;
+$global-color-very-dark-blue-primary: #00436d;
+$global-color-very-dark-gray-primary: #333;
+$global-color-very-dark-gray-secondary: #898989;
+$global-color-very-dark-gray-tertiary: #1e1e1e;
+$global-color-very-dark-gray-quaternary: #6b6b6b;
+$global-color-very-dark-gray-quinary: #666;
+$global-color-very-dark-grayish-blue-primary: #53565a;
+$global-color-very-light-blue-primary: #82d4ff;
+$global-color-very-light-gray: #f5f0ef;
+$global-color-very-light-gray-secondary: #f1f1f1;
+$global-color-very-light-gray-tertiary: #f6f0f0;
+$global-color-white: #fff;
 
-$grey_aaa: #aaaaaa;
-$grey_a1a: #a1a1a1;
-$grey_a6a: #a6a6a6;
-$grey_b3b: #b3b3b3;
-$grey_ccc: #cccccc;
-$grey_c9c: #c9c9c9;
-$grey_d7d: #d7d7d7;
-$grey_e4e: #e4e4e4;
-$grey_f2f: #f2f2f2;
-$grey_f6f: #f6f6f6;
-$grey_f9f: #f9f9f9;
-$grey_1e1: #1e1e1e;
-$grey_333: #333333;
-$grey_4d4: #4d4d4d;
-$grey_515: #515151;
-$grey_666: #666666;
-$grey_6b6: #6b6b6b;
-$grey_868: #868686;
-$grey_999: #999999;
-
-$blue_007: #0077c0;
-$blue_b5d: #b5d1ee;
-
-$red_d41: #d4145a;
-
-$green_00b: #00b034;
-$green_006: #006600;
-$green_009: #009900;
-$green_028: #028b2c;
+/* ==========================================================================
+   Breakpoints
+   Note: These breakpoints should be kept in sync with settings.js
+   ========================================================================== */
+$breakpoints: (
+  xs: 568px,
+  xs-max: 767px,
+  sm: 768px,
+  sm-max: 1199px,
+  md: 1200px,
+  md-max: 2199px,
+  lg: 2200px
+);

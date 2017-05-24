@@ -1,0 +1,10 @@
+﻿$mappy-queries: (
+  'xs': mappy-bp(max xs), // media all and (max-width: 35.5em)
+  'xs-sm': mappy-bp(xs sm), // @media all and (min-width 35.5em) and (max-width: 48em)
+  'xs-max': mappy-bp(max sm), // media all and (max-width: 35.5em - 1px)
+  'sm': mappy-bp(sm), // @media all and (min-width 35.5em)
+  'sm-md': mappy-bp(sm md), // @media all and (min-width 35.5em) and (max-width: 48em)
+  'sm-max': mappy-bp(max sm-max), // @media all (max-width: 48em - 1px)
+  'md': mappy-bp(md) // @media all and (min-width 64em)
+);
+

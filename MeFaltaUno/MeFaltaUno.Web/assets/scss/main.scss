@@ -1,3 +1,8 @@
 ﻿@import 'utils/mixins';
 @import 'utils/variables';
+@import 'utils/_mappy-breakpoints.scss';
+@import 'utils/_mp.scss';
 @import 'utils/functions';
+@import 'pages/mobile.scss';
+@import 'pages/tablet.scss';
+@import 'pages/desktop.scss';

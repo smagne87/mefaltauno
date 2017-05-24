@@ -292,6 +292,8 @@
     <Folder Include="assets\css\" />
     <Folder Include="assets\img\" />
     <Folder Include="assets\js\" />
+    <Folder Include="assets\scss\pages\desktop\" />
+    <Folder Include="assets\scss\pages\tablet\" />
   </ItemGroup>
   <ItemGroup>
     <Content Include="assets\fonts\glyphicons-halflings-regular.woff" />
@@ -384,6 +386,24 @@
   </ItemGroup>
   <ItemGroup>
     <Content Include="assets\scss\main.scss" />
+  </ItemGroup>
+  <ItemGroup>
+    <Content Include="assets\scss\pages\mobile\base.scss" />
+  </ItemGroup>
+  <ItemGroup>
+    <Content Include="assets\scss\utils\_mappy-breakpoints.scss" />
+  </ItemGroup>
+  <ItemGroup>
+    <Content Include="assets\scss\utils\_mp.scss" />
+  </ItemGroup>
+  <ItemGroup>
+    <Content Include="assets\scss\pages\desktop.scss" />
+  </ItemGroup>
+  <ItemGroup>
+    <Content Include="assets\scss\pages\mobile.scss" />
+  </ItemGroup>
+  <ItemGroup>
+    <Content Include="assets\scss\pages\tablet.scss" />
   </ItemGroup>
   <PropertyGroup>
     <VisualStudioVersion Condition="'$(VisualStudioVersion)' == ''">10.0</VisualStudioVersion>
